@@ -20,7 +20,7 @@ allprojects {
 	repositories {
 		......
 		maven { url 'https://jitpack.io' }
-    }
+	}
 }
 ```
 ## Step 2.添加compile引用到Module的build.gradle配置文件中
