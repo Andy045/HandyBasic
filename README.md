@@ -128,7 +128,7 @@ public class MyBaseApplication extends BaseApplication {
 ​  参考操作：
 
 ```java
-
+......
 @Override
 public void onPermissionRejectionHDB() {
   super.onPermissionRejectionHDB();
@@ -141,18 +141,18 @@ public void onPermissionRejectionHDB() {
     startActivityForResult(intent, 45);
     sweetAlertDialog.dismiss();
   }
-  ew SweetAlertDialog.OnSweetClickListener() {
+}, new SweetAlertDialog.OnSweetClickListener() {
   @Override
   public void onClick(SweetAlertDialog sweetAlertDialog) {
     sweetAlertDialog.dismiss();
     ActivityStackUtils.getInstance().AppExit(context);
   }
 }).setCancelable(false);
-
+......
 @Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
   super.onActivityResult(requestCode, resultCode, data);
-  // 若从设置界面返回，重新扫描权限（请将此方法放与onActivityPermissionRejection()同级）
+  // 若从设置界面返回，重新扫描权限（请将此方法放与onActivityPermissionRejection()同级）  
   if (requestCode == 45) {
     PermissionsUtils.checkPermissions(activity, true);
   }
@@ -171,7 +171,6 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 @Override
 protected void onCreate(Bundle savedInstanceState) {
   ...
-
   HandyBase.getInstance()
     .setBuglyAppId("") //设置Bugly异常监控AppKey
     .setInitLogUtils(true) //是否使用默认的日志打印功能（打印方法 LogUtils.日志级别）
