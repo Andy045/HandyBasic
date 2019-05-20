@@ -63,14 +63,6 @@ dependencies {
     api 'com.github.Raizlabs.DBFlow:dbflow-sqlcipher:4.2.4'
     annotationProcessor 'com.github.Raizlabs.DBFlow:dbflow-processor:4.2.4'
 
-    // RXJava
-    // https://github.com/ReactiveX/RxJava
-    api 'io.reactivex.rxjava2:rxjava:2.2.8'
-
-    // RXAndroid
-    // https://github.com/ReactiveX/RxAndroid
-    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
-
     // BGASwipeBackLayout
     // https://github.com/bingoogolapple/BGASwipeBackLayout-Android
     api 'cn.bingoogolapple:bga-swipebacklayout:1.2.0'

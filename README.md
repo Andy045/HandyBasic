@@ -197,9 +197,6 @@ protected void onCreate(Bundle savedInstanceState) {
 * 新接入[Bugly](https://bugly.qq.com/docs/user-guide/instruction-manual-android/?v=20180709165613)
 * 新接入[EventBus](https://github.com/greenrobot/EventBus)
 * 新接入[DBFlow](https://github.com/agrosner/DBFlow)
-* 新接入[RXJava](https://github.com/ReactiveX/RxJava)
-* 新接入[RXAndroid](https://github.com/ReactiveX/RxAndroid)
-* 新接入[RxLifeCycle](https://github.com/trello/RxLifecycle)
 * 新接入[BGASwipeBackLayout](https://github.com/bingoogolapple/BGASwipeBackLayout-Android)
 
 # 说明
