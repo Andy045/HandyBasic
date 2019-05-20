@@ -10,6 +10,7 @@ import android.support.annotation.CallSuper;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -20,7 +21,6 @@ import com.handy.basic.R;
 import com.handy.basic.evenbus.BaseMessageEvent;
 import com.handy.basic.utils.ActivityStackUtils;
 import com.handy.basic.utils.PermissionsUtils;
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -36,7 +36,7 @@ import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
  * @date Created in 2019/2/27 16:53
  * @modified By liujie
  */
-public abstract class BaseActivity extends RxAppCompatActivity implements BaseApplicationApi.BaseActivityApi {
+public abstract class BaseActivity extends AppCompatActivity implements BaseApplicationApi.BaseActivityApi {
 
     //============================================================
     //  功能配置

@@ -6,12 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.handy.basic.evenbus.BaseMessageEvent;
-import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -25,7 +25,7 @@ import org.greenrobot.eventbus.ThreadMode;
  * @date Created in 2019/2/27 16:53
  * @modified By liujie
  */
-public abstract class BaseFragment extends RxFragment implements BaseApplicationApi.BaseFragmentApi {
+public abstract class BaseFragment extends Fragment implements BaseApplicationApi.BaseFragmentApi {
 
     //============================================================
     //  功能配置
