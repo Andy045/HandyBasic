@@ -1,10 +1,6 @@
-<h1><center>敏捷开发基础库</center></h1>
+<h1>敏捷开发基础库</h1>
 
 ![](HandyBasic.png)
-
-# 目录
-
-{:toc}
 
 # 最新版本
    [![](https://jitpack.io/v/Handy045/HandyBasic.svg)](https://jitpack.io/#Handy045/HandyBasic)
