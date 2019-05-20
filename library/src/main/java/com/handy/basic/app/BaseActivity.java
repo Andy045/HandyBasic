@@ -16,10 +16,10 @@ import android.view.View;
 import com.blankj.utilcode.util.KeyboardUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ScreenUtils;
-import com.handy.base.R;
-import com.handy.base.evenbus.BaseMessageEvent;
-import com.handy.base.utils.ActivityStackUtils;
-import com.handy.base.utils.PermissionsUtils;
+import com.handy.basic.R;
+import com.handy.basic.evenbus.BaseMessageEvent;
+import com.handy.basic.utils.ActivityStackUtils;
+import com.handy.basic.utils.PermissionsUtils;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import org.greenrobot.eventbus.EventBus;

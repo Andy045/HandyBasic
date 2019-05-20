@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ObjectUtils;
-import com.handy.base.utils.ProcessUtils;
+import com.handy.basic.utils.ProcessUtils;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.crashreport.CrashReport;
 

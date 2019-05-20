@@ -10,7 +10,7 @@ import android.view.View;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ScreenUtils;
-import com.handy.base.evenbus.BaseMessageEvent;
+import com.handy.basic.evenbus.BaseMessageEvent;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import org.greenrobot.eventbus.EventBus;

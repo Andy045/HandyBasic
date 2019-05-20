@@ -12,8 +12,7 @@ import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.CrashUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ObjectUtils;
-import com.handy.base.config.BuglyConfig;
-import com.handy.base.utils.androidutilcode.Utils;
+import com.handy.basic.config.BuglyConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
@@ -51,8 +50,8 @@ public abstract class BaseApplication extends Application {
         super.onCreate();
         try {
             /*初始化工具类*/
-            Utils.init(this);
             com.blankj.utilcode.util.Utils.init(this);
+            com.handy.basic.utils.androidutilcode.Utils.init(this);
 
             /*初始化侧滑返回功能*/
             BGASwipeBackHelper.init(this, null);

@@ -10,11 +10,11 @@ import android.support.annotation.NonNull;
  * @date Created in 2018/12/20 16:49
  * @modified By liujie
  */
-public abstract class BaseMessageEvent {
+public abstract class BaseMessageEvent<T> {
 
     private boolean result;
     private String message;
-    private Object object;
+    private T content;
 
     public BaseMessageEvent(boolean result) {
         this.result = result;
@@ -24,9 +24,9 @@ public abstract class BaseMessageEvent {
         this.message = message;
     }
 
-    public BaseMessageEvent(@NonNull String message, @NonNull Object object) {
+    public BaseMessageEvent(@NonNull String message, @NonNull T content) {
         this.message = message;
-        this.object = object;
+        this.content = content;
     }
 
     public boolean isResult() {
@@ -48,12 +48,12 @@ public abstract class BaseMessageEvent {
     }
 
     @NonNull
-    public Object getObject() {
-        return object;
+    public T getContent() {
+        return content;
     }
 
-    public BaseMessageEvent setObject(@NonNull Object object) {
-        this.object = object;
+    public BaseMessageEvent setContent(@NonNull T content) {
+        this.content = content;
         return this;
     }
 }
