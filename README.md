@@ -13,6 +13,7 @@
 # 项目引用
 
 ## Step 1.添加maven地址到Project的build.gradle配置文件中
+
 ```javascript
 buildscript {
   repositories {
@@ -29,7 +30,8 @@ allprojects {
   }
 }
 ```
-## Step 2.添加compile引用到Module的build.gradle配置文件中
+## Step 2.添加api引用到Module的build.gradle配置文件中
+
 ```javascript
 apply plugin: 'com.android.application'（or：apply plugin: 'com.android.library'）
 
@@ -52,7 +54,7 @@ android {
 
 dependencies {
   ...
-  compile 'com.github.liujie045:HandyBasic:最新版本'
+  api 'com.github.liujie045:HandyBasic:最新版本'
   annotationProcessor 'com.github.Raizlabs.DBFlow:dbflow-processor:4.2.4'
   annotationProcessor 'org.greenrobot:eventbus-annotation-processor:3.1.1'
 }
@@ -61,6 +63,7 @@ dependencies {
 ## Step 3.HandyBase基础库初始化
 
 ### 将自定义Application继承BaseApplication
+
 ```java
 public class MyBaseApplication extends BaseApplication {
   {
@@ -108,6 +111,7 @@ public class MyBaseApplication extends BaseApplication {
 ## Step 4.已在BaseActivity中内置Android6.0权限扫描功能，框架已默认添加了五种权限
 
   已默认追加的权限：
+
 ```javascript
 <uses-permission android:name="android.permission.INTERNET"/> <!-- 网络通信-->
 <uses-permission android:name="android.permission.READ_PHONE_STATE"/> <!-- 获取设备信息 -->
