@@ -54,7 +54,7 @@ android {
 
 dependencies {
   ...
-  api 'com.github.Handy045:HandyBasic:最新版本'
+  api 'com.github.Handy045:HandyBasic:最新版本号'
   annotationProcessor 'com.github.Raizlabs.DBFlow:dbflow-processor:4.2.4'
   annotationProcessor 'org.greenrobot:eventbus-annotation-processor:3.1.1'
 }
