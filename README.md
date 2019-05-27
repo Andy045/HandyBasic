@@ -3,9 +3,15 @@
 ![](HandyBasic.png)
 
 # 最新版本
+
    [![](https://jitpack.io/v/Handy045/HandyBasic.svg)](https://jitpack.io/#Handy045/HandyBasic)
 
+# Javadoc文档查看
+
+[最新版本-Javadoc文档](https://javadoc.jitpack.io/com/github/Handy045/HandyBasic/latest/javadoc/)
+
 # 项目引用
+
 ## Step 1.添加maven地址到Project的build.gradle配置文件中
 ```javascript
 buildscript {
