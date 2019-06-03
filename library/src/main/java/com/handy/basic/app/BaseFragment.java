@@ -11,11 +11,6 @@ import android.view.View;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ScreenUtils;
-import com.handy.basic.evenbus.BaseMessageEvent;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * BaseFragment
@@ -108,8 +103,6 @@ public abstract class BaseFragment extends Fragment implements BaseApplicationAp
         this.application = activity.getApplication();
         this.screenWidth = ScreenUtils.getScreenWidth();
         this.screenHeight = ScreenUtils.getScreenHeight();
-
-        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -210,8 +203,6 @@ public abstract class BaseFragment extends Fragment implements BaseApplicationAp
         }
         onFinishing();
 
-        EventBus.getDefault().unregister(this);
-
         this.isCreateed = false;
         super.onDestroy();
     }
@@ -254,13 +245,5 @@ public abstract class BaseFragment extends Fragment implements BaseApplicationAp
 
     @Override
     public void onFinishing() {
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void getMessageEventOnMain(BaseMessageEvent baseMessageEvent) {
-    }
-
-    @Subscribe(threadMode = ThreadMode.BACKGROUND)
-    public void getMessageEventOnBackground(BaseMessageEvent baseMessageEvent) {
     }
 }
