@@ -115,7 +115,7 @@ public class HandyBase {
 
             /*初始化日志工具*/
             if (isInitLogUtils) {
-                final LogUtils.Config config = LogUtils.getConfig()
+                LogUtils.getConfig()
                         //设置 log 总开关，包括输出到控制台和文件，默认开
                         .setLogSwitch(AppUtils.isAppDebug())
                         //设置是否输出到控制台开关，默认开
