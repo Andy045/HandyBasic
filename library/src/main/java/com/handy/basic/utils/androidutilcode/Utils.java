@@ -76,9 +76,7 @@ public final class Utils {
      * @return the context of Application object
      */
     public static Application getApp() {
-        if (sApplication != null) {
-            return sApplication;
-        }
+        if (sApplication != null) return sApplication;
         return getApplicationByReflect();
     }
 

@@ -155,9 +155,7 @@ public final class LocationUtils {
      */
     @RequiresPermission(ACCESS_FINE_LOCATION)
     public static boolean register(long minTime, long minDistance, OnLocationChangeListener listener) {
-        if (listener == null) {
-            return false;
-        }
+        if (listener == null) return false;
         mLocationManager = (LocationManager) Utils.getApp().getSystemService(Context.LOCATION_SERVICE);
         //noinspection ConstantConditions
         if (!mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
@@ -168,12 +166,8 @@ public final class LocationUtils {
         mListener = listener;
         String provider = mLocationManager.getBestProvider(getCriteria(), true);
         Location location = mLocationManager.getLastKnownLocation(provider);
-        if (location != null) {
-            listener.getLastKnownLocation(location);
-        }
-        if (myLocationListener == null) {
-            myLocationListener = new MyLocationListener();
-        }
+        if (location != null) listener.getLastKnownLocation(location);
+        if (myLocationListener == null) myLocationListener = new MyLocationListener();
         mLocationManager.requestLocationUpdates(provider, minTime, minDistance, myLocationListener);
         return true;
     }
@@ -228,9 +222,7 @@ public final class LocationUtils {
         Geocoder geocoder = new Geocoder(Utils.getApp(), Locale.getDefault());
         try {
             List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
-            if (addresses.size() > 0) {
-                return addresses.get(0);
-            }
+            if (addresses.size() > 0) return addresses.get(0);
         } catch (IOException e) {
             e.printStackTrace();
         }

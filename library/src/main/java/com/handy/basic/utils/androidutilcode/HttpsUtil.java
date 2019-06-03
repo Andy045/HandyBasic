@@ -102,15 +102,11 @@ public final class HttpsUtil {
             is = connection.getInputStream();
             Scanner scan = new Scanner(is);
             scan.useDelimiter("\\A");
-            if (scan.hasNext()) {
-                return scan.next();
-            }
+            if (scan.hasNext()) return scan.next();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (connection != null) {
-                connection.disconnect();
-            }
+            if (connection != null) connection.disconnect();
             if (os != null) {
                 try {
                     os.close();
