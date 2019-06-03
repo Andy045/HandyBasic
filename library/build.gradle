@@ -46,7 +46,7 @@ dependencies {
 
     // AndroidUtilCode
     // https://github.com/Blankj/AndroidUtilCode
-    api 'com.blankj:utilcode:1.23.7'
+    api 'com.blankj:utilcode:1.24.0'
 
     // Bugly
     // https://bugly.qq.com/docs/user-guide/instruction-manual-android/?v=20180709165613
