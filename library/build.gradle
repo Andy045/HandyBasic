@@ -12,12 +12,6 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [eventBusIndex: 'com.handy.basic.MyEventBusIndex']
-            }
-        }
-
         ndk {
             //设置支持的SO库架构
             abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
@@ -52,11 +46,6 @@ dependencies {
     // https://bugly.qq.com/docs/user-guide/instruction-manual-android/?v=20180709165613
     api 'com.tencent.bugly:crashreport:3.0.0'
     api 'com.tencent.bugly:nativecrashreport:3.7.0'
-
-    // EventBus
-    // https://github.com/greenrobot/EventBus
-    api 'org.greenrobot:eventbus:3.1.1'
-    annotationProcessor 'org.greenrobot:eventbus-annotation-processor:3.1.1'
 
     // DBFlow
     // https://github.com/agrosner/DBFlow
