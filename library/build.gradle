@@ -14,7 +14,7 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [eventBusIndex: 'com.example.myapp.MyEventBusIndex']
+                arguments = [eventBusIndex: 'com.handy.basic.MyEventBusIndex']
             }
         }
 
