@@ -1,5 +1,8 @@
 package com.handy.basic.app;
 
+import android.content.Context;
+import android.support.multidex.MultiDex;
+
 /**
  * FileName
  *
@@ -9,4 +12,9 @@ package com.handy.basic.app;
  * @modified By liujie
  */
 public class LocalApplication extends BaseApplication {
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(base);
+    }
 }
