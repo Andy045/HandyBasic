@@ -20,7 +20,7 @@ import com.blankj.utilcode.util.ScreenUtils;
  * @date Created in 2019/2/27 16:53
  * @modified By liujie
  */
-public abstract class BaseFragment extends Fragment implements BaseApplicationApi.BaseFragmentApi {
+public abstract class BaseFragment<A> extends Fragment implements BaseApplicationApi.BaseFragmentApi {
 
     //============================================================
     //  功能配置
@@ -69,6 +69,8 @@ public abstract class BaseFragment extends Fragment implements BaseApplicationAp
      */
     public View rootLayout;
 
+    public A parentActivity;
+
     public Context context;
     public Activity activity;
     public Application application;
@@ -91,6 +93,10 @@ public abstract class BaseFragment extends Fragment implements BaseApplicationAp
         super.onAttach(activity);
 
         this.activity = activity;
+
+        if (parentActivity instanceof Activity) {
+            parentActivity = (A) activity;
+        }
     }
 
     @Override
