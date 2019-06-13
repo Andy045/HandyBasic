@@ -38,6 +38,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    // FastJson - https://github.com/alibaba/fastjson
+    api 'com.alibaba:fastjson:1.2.58'
+
     // AndroidUtilCode
     // https://github.com/Blankj/AndroidUtilCode
     api 'com.blankj:utilcode:1.24.0'
