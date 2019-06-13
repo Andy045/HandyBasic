@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Looper;
+import android.os.SystemClock;
 import android.widget.Toast;
 
 import com.blankj.utilcode.util.AppUtils;
@@ -35,6 +36,8 @@ public class BaseApplicationMethod {
                             return null;
                         }
                     }.execute();
+
+                    SystemClock.sleep(1200L);
 
                     AppUtils.exitApp();
                 } else {
