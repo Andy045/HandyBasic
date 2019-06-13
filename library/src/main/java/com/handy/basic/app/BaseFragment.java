@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.blankj.utilcode.util.LogUtils;
@@ -20,7 +21,7 @@ import com.blankj.utilcode.util.ScreenUtils;
  * @date Created in 2019/2/27 16:53
  * @modified By liujie
  */
-public abstract class BaseFragment<A> extends Fragment implements BaseApplicationApi.BaseFragmentApi {
+public abstract class BaseFragment<A extends AppCompatActivity> extends Fragment implements BaseApplicationApi.BaseFragmentApi {
 
     //============================================================
     //  功能配置
@@ -92,10 +93,10 @@ public abstract class BaseFragment<A> extends Fragment implements BaseApplicatio
         }
         super.onAttach(activity);
 
-        this.activity = activity;
-
-        if (parentActivity instanceof Activity) {
-            parentActivity = (A) activity;
+        try {
+            this.activity = activity;
+            this.parentActivity = (A) activity;
+        } catch (Exception ignored) {
         }
     }
 
