@@ -20,7 +20,7 @@ import java.util.List;
 public class BasePresenter implements IPresenter {
 
     protected AppCompatActivity activity;
-    protected List<IView> iViews = new ArrayList<>();
+    protected List<IView<BasePresenter>> iViews = new ArrayList<>();
 
     public BasePresenter() {
         onStart();
@@ -31,13 +31,27 @@ public class BasePresenter implements IPresenter {
         onStart();
     }
 
-    public BasePresenter(@NonNull AppCompatActivity activity, @NonNull List<IView> iViews) {
+    public BasePresenter(@NonNull AppCompatActivity activity, @NonNull List<IView<BasePresenter>> iViews) {
         this.activity = activity;
         this.iViews = new ArrayList<>(iViews);
-        for (IView iView : iViews) {
+        for (IView<BasePresenter> iView : iViews) {
             iView.setIPresenter(this);
         }
         onStart();
+    }
+
+    public BasePresenter addiView(IView<BasePresenter> iView) {
+        this.iViews.add(iView);
+        iView.setIPresenter(this);
+        return this;
+    }
+
+    public BasePresenter addiViews(List<IView<BasePresenter>> iViews) {
+        this.iViews.addAll(iViews);
+        for (IView<BasePresenter> iView : iViews) {
+            iView.setIPresenter(this);
+        }
+        return this;
     }
 
     /**
