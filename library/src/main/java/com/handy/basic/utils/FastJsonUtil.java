@@ -8,7 +8,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.StringUtils;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -152,7 +151,7 @@ public class FastJsonUtil {
 
     public static String getString(@NonNull JSONObject jsonObject, @NonNull String key) {
         try {
-            return StringUtils.null2Length0(jsonObject.getString(key));
+            return jsonObject.getString(key);
         } catch (Exception e) {
             LogUtils.e("fastjson get string error, json: {}, key: {}", jsonObject, key, e);
             return null;
