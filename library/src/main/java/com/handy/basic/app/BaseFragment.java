@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,8 @@ import android.view.View;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ScreenUtils;
+import com.handy.basic.mvp.BasePresenter;
+import com.handy.basic.mvp.IView;
 
 /**
  * BaseFragment
@@ -21,7 +24,7 @@ import com.blankj.utilcode.util.ScreenUtils;
  * @date Created in 2019/2/27 16:53
  * @modified By liujie
  */
-public abstract class BaseFragment<A extends AppCompatActivity> extends Fragment implements BaseApplicationApi.BaseFragmentApi {
+public abstract class BaseFragment<A extends AppCompatActivity, P extends BasePresenter> extends Fragment implements BaseApplicationApi.BaseFragmentApi, IView<P> {
 
     //============================================================
     //  功能配置
@@ -71,6 +74,7 @@ public abstract class BaseFragment<A extends AppCompatActivity> extends Fragment
     public View rootLayout;
 
     public A parentActivity;
+    public P presenter;
 
     public Context context;
     public Activity activity;
@@ -96,7 +100,8 @@ public abstract class BaseFragment<A extends AppCompatActivity> extends Fragment
         try {
             this.activity = activity;
             this.parentActivity = (A) activity;
-        } catch (Exception ignored) {
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -113,7 +118,7 @@ public abstract class BaseFragment<A extends AppCompatActivity> extends Fragment
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         if (isLogFragmentLife) {
             LogUtils.d("Fragment - " + this.getClass().getSimpleName() + " - onViewCreated(View view, Bundle savedInstanceState)");
         }
@@ -252,5 +257,10 @@ public abstract class BaseFragment<A extends AppCompatActivity> extends Fragment
 
     @Override
     public void onFinishing() {
+    }
+
+    public BaseFragment<A, P> setPresenter(P presenter) {
+        this.presenter = presenter;
+        return this;
     }
 }
