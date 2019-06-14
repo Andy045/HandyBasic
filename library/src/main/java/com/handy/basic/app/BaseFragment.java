@@ -259,8 +259,8 @@ public abstract class BaseFragment<A extends AppCompatActivity, P extends BasePr
     public void onFinishing() {
     }
 
-    public BaseFragment<A, P> setPresenter(P presenter) {
+    @Override
+    public void setIPresenter(P presenter) {
         this.presenter = presenter;
-        return this;
     }
 }
