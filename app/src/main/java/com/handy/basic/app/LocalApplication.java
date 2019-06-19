@@ -19,7 +19,7 @@ public class LocalApplication extends BaseApplication {
     }
 
     @Override
-    void onCreateHDB() {
+    public void onCreateHDB() {
 
     }
 }
