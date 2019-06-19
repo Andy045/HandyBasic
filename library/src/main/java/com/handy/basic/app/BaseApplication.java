@@ -46,6 +46,8 @@ public abstract class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         try {
+            onCreateHDB();
+
             /*初始化工具类*/
             com.blankj.utilcode.util.Utils.init(this);
             com.handy.basic.utils.androidutilcode.Utils.init(this);
@@ -87,4 +89,9 @@ public abstract class BaseApplication extends Application {
     protected BuglyConfig resetBuglyConfig(BuglyConfig buglyConfig) {
         return buglyConfig;
     }
+
+    /**
+     * 子类中加载其他功能
+     */
+    abstract void onCreateHDB();
 }
