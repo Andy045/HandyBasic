@@ -11,5 +11,4 @@ package com.handy.basic.mvp;
 public interface IView<I extends BasePresenter> {
 
     void setIPresenter(I iPresenter);
-
 }
