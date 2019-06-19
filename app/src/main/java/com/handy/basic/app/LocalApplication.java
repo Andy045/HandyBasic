@@ -17,4 +17,9 @@ public class LocalApplication extends BaseApplication {
         super.attachBaseContext(base);
         MultiDex.install(base);
     }
+
+    @Override
+    void onCreateHDB() {
+
+    }
 }
