@@ -8,10 +8,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.handy.basic.evenbus.BaseMessageEvent;
 import com.handy.basic.mvp.BasePresenter;
@@ -29,7 +29,7 @@ import org.greenrobot.eventbus.ThreadMode;
  * @date Created in 2019/2/27 16:53
  * @modified By liujie
  */
-public abstract class BaseFragment<A extends AppCompatActivity, P extends BasePresenter> extends Fragment implements BaseApplicationApi.BaseFragmentApi, IView<P> {
+public abstract class BaseFragment<A extends BaseActivity, P extends BasePresenter> extends Fragment implements BaseApplicationApi.BaseFragmentApi, IView<P> {
 
     //============================================================
     //  功能配置
@@ -78,8 +78,8 @@ public abstract class BaseFragment<A extends AppCompatActivity, P extends BasePr
      */
     public View rootLayout;
 
-    public A parentActivity;
-    public P presenter;
+    private A parentActivity;
+    private P presenter;
 
     public Context context;
     public Activity activity;
@@ -267,8 +267,25 @@ public abstract class BaseFragment<A extends AppCompatActivity, P extends BasePr
     public void onFinishing() {
     }
 
+    public A getParentActivity() {
+        if (ObjectUtils.isEmpty(parentActivity)) {
+            parentActivity = (A) activity;
+        }
+        return parentActivity;
+    }
+
+    public P getPresenter() {
+        if (ObjectUtils.isEmpty(presenter)) {
+            BasePresenter basePresenter = getParentActivity().getPresenter();
+            if (ObjectUtils.isNotEmpty(basePresenter)) {
+                basePresenter.resetIPresenter();
+            }
+        }
+        return presenter;
+    }
+
     @Override
-    public void setIPresenter(P presenter) {
+    public void setIPresenter(@NonNull P presenter) {
         this.presenter = presenter;
     }
 
