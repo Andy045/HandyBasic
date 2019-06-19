@@ -1,5 +1,7 @@
 package com.handy.basic.mvp;
 
+import android.support.annotation.NonNull;
+
 /**
  * FileName
  *
@@ -10,5 +12,5 @@ package com.handy.basic.mvp;
  */
 public interface IView<I extends BasePresenter> {
 
-    void setIPresenter(I iPresenter);
+    void setIPresenter(@NonNull I iPresenter);
 }
