@@ -29,7 +29,7 @@ import org.greenrobot.eventbus.ThreadMode;
  * @date Created in 2019/2/27 16:53
  * @modified By liujie
  */
-public abstract class BaseFragment<A extends BaseActivity, P extends BasePresenter> extends Fragment implements BaseApplicationApi.BaseFragmentApi, IView<P> {
+public abstract class BaseFragment<A extends BaseActivity<P>, P extends BasePresenter> extends Fragment implements BaseApplicationApi.BaseFragmentApi, IView<P> {
 
     //============================================================
     //  功能配置
