@@ -93,5 +93,5 @@ public abstract class BaseApplication extends Application {
     /**
      * 子类中加载其他功能
      */
-    abstract void onCreateHDB();
+    public abstract void onCreateHDB();
 }
