@@ -4,7 +4,8 @@ import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+
+import com.blankj.utilcode.util.ObjectUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,39 +20,49 @@ import java.util.List;
  */
 public class BasePresenter implements IPresenter {
 
-    protected AppCompatActivity activity;
-    protected List<IView> iViews = new ArrayList<>();
+    private LifecycleOwner lifecycleOwner;
+    private List<IView> iViews = new ArrayList<>();
 
-    public BasePresenter() {
+    public BasePresenter(@NonNull LifecycleOwner lifecycleOwner) {
+        this.lifecycleOwner = lifecycleOwner;
         onStart();
     }
 
-    public BasePresenter(@NonNull AppCompatActivity activity) {
-        this.activity = activity;
-        onStart();
-    }
-
-    public BasePresenter(@NonNull AppCompatActivity activity, @NonNull List<IView> iViews) {
-        this.activity = activity;
+    public BasePresenter(@NonNull LifecycleOwner lifecycleOwner, @NonNull List<IView> iViews) {
+        this.lifecycleOwner = lifecycleOwner;
         this.iViews = new ArrayList<>(iViews);
         for (IView iView : iViews) {
-            iView.setIPresenter(this);
+            if (ObjectUtils.isNotEmpty(iView)) {
+                iView.setIPresenter(this);
+            }
         }
         onStart();
     }
 
-    public BasePresenter addiView(IView iView) {
+    public BasePresenter addiView(@NonNull IView iView) {
         this.iViews.add(iView);
-        iView.setIPresenter(this);
-        return this;
-    }
-
-    public BasePresenter addiViews(List<IView> iViews) {
-        this.iViews.addAll(iViews);
-        for (IView iView : iViews) {
+        if (ObjectUtils.isNotEmpty(iView)) {
             iView.setIPresenter(this);
         }
         return this;
+    }
+
+    public BasePresenter addiViews(@NonNull List<IView> iViews) {
+        this.iViews.addAll(iViews);
+        for (IView iView : iViews) {
+            if (ObjectUtils.isNotEmpty(iView)) {
+                iView.setIPresenter(this);
+            }
+        }
+        return this;
+    }
+
+    public void resetIPresenter() {
+        for (IView iView : iViews) {
+            if (ObjectUtils.isNotEmpty(iView)) {
+                iView.setIPresenter(this);
+            }
+        }
     }
 
     /**
@@ -60,8 +71,8 @@ public class BasePresenter implements IPresenter {
     @Override
     public void onStart() {
         //将 LifecycleObserver 注册给 LifecycleOwner 后 @OnLifecycleEvent 才可以正常使用
-        if (activity != null) {
-            ((LifecycleOwner) activity).getLifecycle().addObserver(this);
+        if (lifecycleOwner != null) {
+            lifecycleOwner.getLifecycle().addObserver(this);
         }
     }
 
@@ -70,7 +81,7 @@ public class BasePresenter implements IPresenter {
      */
     @Override
     public void onDestroy() {
-        this.activity = null;
+        this.lifecycleOwner = null;
         this.iViews = null;
     }
 
