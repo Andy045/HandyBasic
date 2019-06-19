@@ -13,8 +13,13 @@ import android.view.View;
 
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ScreenUtils;
+import com.handy.basic.evenbus.BaseMessageEvent;
 import com.handy.basic.mvp.BasePresenter;
 import com.handy.basic.mvp.IView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /**
  * BaseFragment
@@ -115,6 +120,8 @@ public abstract class BaseFragment<A extends AppCompatActivity, P extends BasePr
         this.application = activity.getApplication();
         this.screenWidth = ScreenUtils.getScreenWidth();
         this.screenHeight = ScreenUtils.getScreenHeight();
+
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -214,6 +221,7 @@ public abstract class BaseFragment<A extends AppCompatActivity, P extends BasePr
             LogUtils.d("Fragment - " + this.getClass().getSimpleName() + " - onDestroy()");
         }
         onFinishing();
+        EventBus.getDefault().unregister(this);
 
         this.isCreateed = false;
         super.onDestroy();
@@ -262,5 +270,13 @@ public abstract class BaseFragment<A extends AppCompatActivity, P extends BasePr
     @Override
     public void setIPresenter(P presenter) {
         this.presenter = presenter;
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void getMessageEventOnMain(BaseMessageEvent baseMessageEvent) {
+    }
+
+    @Subscribe(threadMode = ThreadMode.BACKGROUND)
+    public void getMessageEventOnBackground(BaseMessageEvent baseMessageEvent) {
     }
 }

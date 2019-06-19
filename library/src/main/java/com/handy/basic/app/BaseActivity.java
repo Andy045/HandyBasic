@@ -18,8 +18,13 @@ import com.blankj.utilcode.util.KeyboardUtils;
 import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.handy.basic.R;
+import com.handy.basic.evenbus.BaseMessageEvent;
 import com.handy.basic.utils.ActivityStackUtils;
 import com.handy.basic.utils.PermissionsUtils;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
 
@@ -113,6 +118,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseAppl
 
             initSwipeBackFinish();
             ActivityStackUtils.addActivity(this);
+            EventBus.getDefault().register(this);
 
             /* 初始化Activity接收意图的内容 */
             if (isInitIntentBundle && getIntent() != null && getIntent().getExtras() != null) {
@@ -182,6 +188,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseAppl
             onFinishing();
 
             KeyboardUtils.hideSoftInput(activity);
+            EventBus.getDefault().unregister(this);
             ActivityStackUtils.finishChoiceDesc(this);
         }
     }
@@ -361,5 +368,13 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseAppl
          *     }
          * }
          */
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void getMessageEventOnMain(BaseMessageEvent baseMessageEvent) {
+    }
+
+    @Subscribe(threadMode = ThreadMode.BACKGROUND)
+    public void getMessageEventOnBackground(BaseMessageEvent baseMessageEvent) {
     }
 }
