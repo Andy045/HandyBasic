@@ -39,7 +39,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     // EventBus - https://github.com/greenrobot/EventBus
-    implementation 'org.greenrobot:eventbus:3.1.1'
+    api 'org.greenrobot:eventbus:3.1.1'
 
     // FastJson - https://github.com/alibaba/fastjson
     api 'com.alibaba:fastjson:1.2.58'
