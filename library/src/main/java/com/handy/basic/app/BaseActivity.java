@@ -19,6 +19,7 @@ import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.handy.basic.R;
 import com.handy.basic.evenbus.BaseMessageEvent;
+import com.handy.basic.mvp.BasePresenter;
 import com.handy.basic.utils.ActivityStackUtils;
 import com.handy.basic.utils.PermissionsUtils;
 
@@ -36,7 +37,7 @@ import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
  * @date Created in 2019/2/27 16:53
  * @modified By liujie
  */
-public abstract class BaseActivity extends AppCompatActivity implements BaseApplicationApi.BaseActivityApi {
+public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity implements BaseApplicationApi.BaseActivityApi {
 
     //============================================================
     //  功能配置
@@ -92,6 +93,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseAppl
      * 界面视图布局
      */
     public View rootLayout = null;
+
+    private P presenter;
 
     public Context context;
     public BaseActivity activity;
@@ -368,6 +371,15 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseAppl
          *     }
          * }
          */
+    }
+
+    public P getPresenter() {
+        return presenter;
+    }
+
+    public BaseActivity<P> setPresenter(P presenter) {
+        this.presenter = presenter;
+        return this;
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
