@@ -10,5 +10,5 @@ package com.handy.basic.mvp;
  */
 public interface IView<P extends BasePresenter> {
 
-    P initPresenter();
+    P initPresenter() throws Exception;
 }
