@@ -16,6 +16,7 @@ import android.view.View;
 
 import com.blankj.utilcode.util.KeyboardUtils;
 import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.handy.basic.R;
 import com.handy.basic.evenbus.BaseMessageEvent;
@@ -118,6 +119,8 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
             this.savedInstanceState = savedInstanceState;
             this.screenWidth = ScreenUtils.getScreenWidth();
             this.screenHeight = ScreenUtils.getScreenHeight();
+
+            this.presenter = initPresenter();
 
             initSwipeBackFinish();
             ActivityStackUtils.addActivity(this);
@@ -374,12 +377,14 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     }
 
     public P getPresenter() {
+        if (ObjectUtils.isEmpty(this.presenter)) {
+            this.presenter = initPresenter();
+        }
         return presenter;
     }
 
-    public BaseActivity<P> setPresenter(P presenter) {
-        this.presenter = presenter;
-        return this;
+    public P initPresenter() {
+        return null;
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
