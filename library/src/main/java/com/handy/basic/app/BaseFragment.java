@@ -117,11 +117,15 @@ public abstract class BaseFragment<A extends BaseActivity<P>, P extends BasePres
         }
         super.onCreate(savedInstanceState);
 
-        this.application = activity.getApplication();
-        this.screenWidth = ScreenUtils.getScreenWidth();
-        this.screenHeight = ScreenUtils.getScreenHeight();
+        try {
+            this.application = activity.getApplication();
+            this.screenWidth = ScreenUtils.getScreenWidth();
+            this.screenHeight = ScreenUtils.getScreenHeight();
 
-        EventBus.getDefault().register(this);
+            EventBus.getDefault().register(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -131,14 +135,18 @@ public abstract class BaseFragment<A extends BaseActivity<P>, P extends BasePres
         }
         super.onViewCreated(view, savedInstanceState);
 
-        this.isCreateed = true;
-        if (rootLayout == null) {
-            rootLayout = view;
-        }
-        /* 初始化界面数据 */
-        if (isInitViewHDB) {
-            initViewHDB(view, savedInstanceState);
-            isInitViewHDB = false;
+        try {
+            this.isCreateed = true;
+            if (rootLayout == null) {
+                rootLayout = view;
+            }
+            /* 初始化界面数据 */
+            if (isInitViewHDB) {
+                initViewHDB(view, savedInstanceState);
+                isInitViewHDB = false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -149,9 +157,13 @@ public abstract class BaseFragment<A extends BaseActivity<P>, P extends BasePres
         }
         super.onActivityCreated(savedInstanceState);
 
-        if (isInitDataHDB) {
-            initDataHDB(savedInstanceState);
-            isInitDataHDB = false;
+        try {
+            if (isInitDataHDB) {
+                initDataHDB(savedInstanceState);
+                isInitDataHDB = false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -170,8 +182,12 @@ public abstract class BaseFragment<A extends BaseActivity<P>, P extends BasePres
         }
         super.onResume();
 
-        if (getUserVisibleHint() && isCreateed) {
-            onRefreshHDB();
+        try {
+            if (getUserVisibleHint() && isCreateed) {
+                onRefreshHDB();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -182,12 +198,16 @@ public abstract class BaseFragment<A extends BaseActivity<P>, P extends BasePres
         }
         super.setUserVisibleHint(isVisibleToUser);
 
-        if (isVisibleToUser && isCreateed) {
-            onVisiableHDB();
-            if (isLazyLoadHDB) {
-                onLazyLoadHDB();
-                isLazyLoadHDB = false;
+        try {
+            if (isVisibleToUser && isCreateed) {
+                onVisiableHDB();
+                if (isLazyLoadHDB) {
+                    onLazyLoadHDB();
+                    isLazyLoadHDB = false;
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -220,11 +240,15 @@ public abstract class BaseFragment<A extends BaseActivity<P>, P extends BasePres
         if (isLogFragmentLife) {
             LogUtils.d("Fragment - " + this.getClass().getSimpleName() + " - onDestroy()");
         }
-        onFinishing();
-        EventBus.getDefault().unregister(this);
-
-        this.isCreateed = false;
         super.onDestroy();
+
+        try {
+            this.isCreateed = false;
+            onFinishing();
+            EventBus.getDefault().unregister(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
