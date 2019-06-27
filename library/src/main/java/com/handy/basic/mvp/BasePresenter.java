@@ -5,11 +5,6 @@ import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.support.annotation.NonNull;
 
-import com.blankj.utilcode.util.ObjectUtils;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Mvp框架中 Presenter层通用基类
  *
@@ -21,48 +16,10 @@ import java.util.List;
 public class BasePresenter implements IPresenter {
 
     private LifecycleOwner lifecycleOwner;
-    private List<IView> iViews = new ArrayList<>();
 
     public BasePresenter(@NonNull LifecycleOwner lifecycleOwner) {
         this.lifecycleOwner = lifecycleOwner;
         onStart();
-    }
-
-    public BasePresenter(@NonNull LifecycleOwner lifecycleOwner, @NonNull List<IView> iViews) {
-        this.lifecycleOwner = lifecycleOwner;
-        this.iViews = new ArrayList<>(iViews);
-        for (IView iView : iViews) {
-            if (ObjectUtils.isNotEmpty(iView)) {
-                iView.setIPresenter(this);
-            }
-        }
-        onStart();
-    }
-
-    public BasePresenter addiView(@NonNull IView iView) {
-        this.iViews.add(iView);
-        if (ObjectUtils.isNotEmpty(iView)) {
-            iView.setIPresenter(this);
-        }
-        return this;
-    }
-
-    public BasePresenter addiViews(@NonNull List<IView> iViews) {
-        this.iViews.addAll(iViews);
-        for (IView iView : iViews) {
-            if (ObjectUtils.isNotEmpty(iView)) {
-                iView.setIPresenter(this);
-            }
-        }
-        return this;
-    }
-
-    public void resetIPresenter() {
-        for (IView iView : iViews) {
-            if (ObjectUtils.isNotEmpty(iView)) {
-                iView.setIPresenter(this);
-            }
-        }
     }
 
     /**
@@ -82,7 +39,6 @@ public class BasePresenter implements IPresenter {
     @Override
     public void onDestroy() {
         this.lifecycleOwner = null;
-        this.iViews = null;
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
