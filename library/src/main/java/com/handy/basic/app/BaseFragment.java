@@ -268,22 +268,23 @@ public abstract class BaseFragment<A extends BaseActivity<P>, P extends BasePres
     }
 
     public A getParentActivity() {
-        if (ObjectUtils.isEmpty(parentActivity)) {
-            parentActivity = (A) activity;
+        if (ObjectUtils.isEmpty(this.parentActivity)) {
+            this.parentActivity = (A) this.activity;
         }
-        return parentActivity;
+        return this.parentActivity;
     }
 
     public P getPresenter() throws Exception {
-        if (ObjectUtils.isEmpty(presenter)) {
-            presenter = initPresenter();
+        if (ObjectUtils.isEmpty(this.presenter)) {
+            this.presenter = initPresenter();
         }
-        return presenter;
+        return this.presenter;
     }
 
     /**
      * 如果当前Fragment使用独立的Presenter，可以重写此方法断开与Activity的关联
      */
+    @Override
     public P initPresenter() throws Exception {
         return getParentActivity().getPresenter();
     }
