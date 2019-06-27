@@ -17,7 +17,7 @@ import cn.bingoogolapple.swipebacklayout.BGASwipeBackHelper;
  * @date Created in 2019/2/27 16:53
  * @modified By liujie
  */
-public abstract class BaseApplication extends Application {
+public class BaseApplication extends Application {
 
     //============================================================
     //  开放配置
@@ -40,6 +40,15 @@ public abstract class BaseApplication extends Application {
      * true:退出app ; false:重启app
      */
     public boolean isCrashExitApp = true;
+
+    private Application application;
+
+    /**
+     * 此方法是为了方便第三方接入此基础库时初始化
+     */
+    public BaseApplication(Application application) {
+        this.application = application;
+    }
 
     @SuppressLint("MissingPermission")
     @Override
@@ -93,5 +102,6 @@ public abstract class BaseApplication extends Application {
     /**
      * 子类中加载其他功能
      */
-    public abstract void onCreateHDB();
+    public void onCreateHDB() {
+    }
 }
