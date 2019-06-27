@@ -376,9 +376,12 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
          */
     }
 
-    public P getPresenter() {
+    public P getPresenter() throws Exception {
         if (ObjectUtils.isEmpty(this.presenter)) {
             this.presenter = initPresenter();
+        }
+        if (ObjectUtils.isEmpty(this.presenter)) {
+            throw new Exception("presenter is null, please check the method -> initPresenter()");
         }
         return presenter;
     }
