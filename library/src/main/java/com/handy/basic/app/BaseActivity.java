@@ -151,17 +151,21 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         }
         super.onStart();
 
-        if (!isCheckPermissions) {
-            /* 初始化界面视图 */
-            if (isInitViewHDB) {
-                initViewHDB(savedInstanceState);
-                isInitViewHDB = false;
+        try {
+            if (!isCheckPermissions) {
+                /* 初始化界面视图 */
+                if (isInitViewHDB) {
+                    initViewHDB(savedInstanceState);
+                    isInitViewHDB = false;
+                }
+                /* 初始化界面数据 */
+                if (isInitDataHDB) {
+                    initDataHDB();
+                    isInitDataHDB = false;
+                }
             }
-            /* 初始化界面数据 */
-            if (isInitDataHDB) {
-                initDataHDB();
-                isInitDataHDB = false;
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -173,13 +177,17 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         }
         super.onResume();
 
-        /* Activity刷新时调用 */
-        onRefreshHDB();
+        try {
+            /* Activity刷新时调用 */
+            onRefreshHDB();
 
-        /* Activity请求时调用（可被重复调用） */
-        if (isOnRequestHDB) {
-            initRequestHDB();
-            isOnRequestHDB = false;
+            /* Activity请求时调用（可被重复调用） */
+            if (isOnRequestHDB) {
+                initRequestHDB();
+                isOnRequestHDB = false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -191,12 +199,16 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         }
         super.onPause();
 
-        if (isFinishing()) {
-            onFinishing();
+        try {
+            if (isFinishing()) {
+                onFinishing();
 
-            KeyboardUtils.hideSoftInput(activity);
-            EventBus.getDefault().unregister(this);
-            ActivityStackUtils.finishChoiceDesc(this);
+                KeyboardUtils.hideSoftInput(activity);
+                EventBus.getDefault().unregister(this);
+                ActivityStackUtils.finishChoiceDesc(this);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
