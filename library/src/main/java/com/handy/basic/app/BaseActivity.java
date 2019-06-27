@@ -244,12 +244,16 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            if (PermissionsUtils.checkPermissions(activity, true)) {
-                onPermissionSuccessHDB();
+        try {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (PermissionsUtils.checkPermissions(activity, true)) {
+                    onPermissionSuccessHDB();
+                }
+            } else {
+                onPermissionRejectionHDB(permissions);
             }
-        } else {
-            onPermissionRejectionHDB(permissions);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -312,8 +316,12 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
     @Override
     public void checkPermissionsHDB() {
-        if (PermissionsUtils.checkPermissions(activity, true)) {
-            onPermissionSuccessHDB();
+        try {
+            if (PermissionsUtils.checkPermissions(activity, true)) {
+                onPermissionSuccessHDB();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -339,17 +347,21 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
     @Override
     public void onPermissionSuccessHDB() {
-        if (isCheckPermissions) {
-            /* 初始化界面视图 */
-            if (isInitViewHDB) {
-                initViewHDB(savedInstanceState);
-                isInitViewHDB = false;
+        try {
+            if (isCheckPermissions) {
+                /* 初始化界面视图 */
+                if (isInitViewHDB) {
+                    initViewHDB(savedInstanceState);
+                    isInitViewHDB = false;
+                }
+                /* 初始化界面数据 */
+                if (isInitDataHDB) {
+                    initDataHDB();
+                    isInitDataHDB = false;
+                }
             }
-            /* 初始化界面数据 */
-            if (isInitDataHDB) {
-                initDataHDB();
-                isInitDataHDB = false;
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
