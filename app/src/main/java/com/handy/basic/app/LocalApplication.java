@@ -1,5 +1,6 @@
 package com.handy.basic.app;
 
+import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
@@ -19,7 +20,7 @@ public class LocalApplication extends BaseApplication {
     }
 
     @Override
-    public void onCreateHDB() {
-
+    public void onCreateHDB(Application application) {
+        super.onCreateHDB(application);
     }
 }
