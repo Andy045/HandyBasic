@@ -50,6 +50,9 @@ public class BaseApplication extends Application {
 
     private Application application;
 
+    public BaseApplication() {
+    }
+
     /**
      * 此方法是为了方便第三方接入此基础库时初始化
      */
