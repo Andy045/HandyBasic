@@ -7,6 +7,7 @@ import android.graphics.drawable.StateListDrawable
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 
 /**
  * @title: StyleUtils
@@ -27,9 +28,10 @@ class StyleUtils private constructor() {
          * @return Selector样式
          */
         fun getStateDrawable(context: Context, @DrawableRes idNormal: Int, @DrawableRes idPressed: Int, @DrawableRes idFocused: Int): StateListDrawable {
-            val normal = if (idNormal == 0) null else context.resources.getDrawable(idNormal)
-            val pressed = if (idPressed == 0) null else context.resources.getDrawable(idPressed)
-            val focus = if (idFocused == 0) null else context.resources.getDrawable(idFocused)
+            val normal = if (idNormal == 0) null else ContextCompat.getDrawable(context, idNormal)
+            val pressed =
+                if (idPressed == 0) null else ContextCompat.getDrawable(context, idPressed)
+            val focus = if (idFocused == 0) null else ContextCompat.getDrawable(context, idFocused)
             return getStateDrawable(normal, pressed, focus)
         }
 

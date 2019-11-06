@@ -3,6 +3,7 @@ package com.handy.basic.utils
 import android.content.Context
 import android.graphics.drawable.StateListDrawable
 import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 
 /**
  * @title: DrawableUtils
@@ -36,9 +37,10 @@ class DrawableUtils private constructor() {
          */
         fun getStateDrawable(context: Context, @DrawableRes idNormal: Int, @DrawableRes idPressed: Int, @DrawableRes idFocused: Int): StateListDrawable {
             val stateListDrawable = StateListDrawable()
-            val normal = if (idNormal == -1) null else context.resources.getDrawable(idNormal)
-            val pressed = if (idPressed == -1) null else context.resources.getDrawable(idPressed)
-            val focus = if (idFocused == -1) null else context.resources.getDrawable(idFocused)
+            val normal = if (idNormal == -1) null else ContextCompat.getDrawable(context, idNormal)
+            val pressed =
+                if (idPressed == -1) null else ContextCompat.getDrawable(context, idPressed)
+            val focus = if (idFocused == -1) null else ContextCompat.getDrawable(context, idFocused)
             //注意该处的顺序，只要有一个状态与之相配，背景就会被换掉
             //所以不要把大范围放在前面了，如果sd.addState(new[]{},normal)放在第一个的话，就没有什么效果了
             stateListDrawable.addState(

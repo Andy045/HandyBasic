@@ -9,6 +9,7 @@ import android.text.StaticLayout
 import android.text.TextPaint
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 import com.blankj.utilcode.util.LogUtils
 import java.io.File
 
@@ -312,7 +313,7 @@ class ImageUtils private constructor() {
             if (idDrawable == 0) {
                 return null
             }
-            val drawable = context.resources.getDrawable(idDrawable).mutate()
+            val drawable = ContextCompat.getDrawable(context, idDrawable)?.mutate() ?: return null
             val inBitmap = com.blankj.utilcode.util.ImageUtils.drawable2Bitmap(drawable)
             val outBitmap = Bitmap.createBitmap(
                 drawable.intrinsicWidth,
