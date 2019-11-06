@@ -55,30 +55,3 @@ dependencies {
     api "com.tencent.bugly:crashreport:$bugly_crashreport_version"
     api "com.tencent.bugly:nativecrashreport:$bugly_nativecrashreport_version"
 }
-
-//-------------------- jitPack生成文档 --------------------
-tasks.withType(JavaCompile) { //指定编码
-    options.encoding = "UTF-8"
-}
-
-task sourcesJar(type: Jar) { //打包源码
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-
-task javadoc(type: Javadoc) {
-    failOnError false
-    source = android.sourceSets.main.java.sourceFiles
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    classpath += configurations.compile
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) { //制作文档(Javadoc)
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives sourcesJar
-    archives javadocJar
-}
