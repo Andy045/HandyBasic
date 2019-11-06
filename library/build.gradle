@@ -1,0 +1,84 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.github.dcendents.android-maven'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+
+    // EventBus - https://github.com/greenrobot/EventBus
+    api "org.greenrobot:eventbus:$eventbus_version"
+
+    // FastJson
+    // https://github.com/alibaba/fastjson
+    implementation "com.alibaba:fastjson:$fastjson_version"
+
+    // AndroidUtilCode
+    // https://github.com/Blankj/AndroidUtilCode
+    api "com.blankj:utilcode:$utilcode_version"
+
+    // Bugly
+    // https://bugly.qq.com/docs/user-guide/instruction-manual-android/?v=20180709165613
+    api "com.tencent.bugly:crashreport:$bugly_crashreport_version"
+    api "com.tencent.bugly:nativecrashreport:$bugly_nativecrashreport_version"
+}
+
+//-------------------- jitPack生成文档 --------------------
+tasks.withType(JavaCompile) { //指定编码
+    options.encoding = "UTF-8"
+}
+
+task sourcesJar(type: Jar) { //打包源码
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    failOnError false
+    source = android.sourceSets.main.java.sourceFiles
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += configurations.compile
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) { //制作文档(Javadoc)
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}

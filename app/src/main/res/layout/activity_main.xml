@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hdb_grey800"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/hdb_grey300"
+        android:gravity="center"
+        android:padding="@dimen/hdb_spacing_medium"
+        android:text="敏捷开发基础库（功能测试）"
+        android:textColor="@color/hdb_grey800"
+        android:textSize="@dimen/hdb_font_medium"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/hdb_grey800"
+        android:gravity="end"
+        android:lines="1"
+        android:padding="@dimen/hdb_spacing_xxlarge"
+        android:text="计算结果"
+        android:textColor="@color/hdb_grey50"
+        android:textSize="@dimen/hdb_font_xxlarge"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <TextView
+        android:id="@+id/tvAc"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_grey600"
+        android:text="AC"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tvResidual"
+        app:layout_constraintTop_toBottomOf="@id/tvResult" />
+
+    <TextView
+        android:id="@+id/tvResidual"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_grey600"
+        android:text="%"
+        app:layout_constraintLeft_toRightOf="@id/tvAc"
+        app:layout_constraintRight_toLeftOf="@id/tvBack"
+        app:layout_constraintTop_toTopOf="@id/tvAc" />
+
+    <TextView
+        android:id="@+id/tvBack"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_grey600"
+        android:text="back"
+        app:layout_constraintLeft_toRightOf="@id/tvResidual"
+        app:layout_constraintRight_toLeftOf="@id/tvDivide"
+        app:layout_constraintTop_toTopOf="@id/tvAc" />
+
+    <TextView
+        android:id="@+id/tvDivide"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_grey600"
+        android:text="/"
+        app:layout_constraintLeft_toRightOf="@id/tvBack"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvAc" />
+
+    <TextView
+        android:id="@+id/tv9"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_grey600"
+        android:text="9"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv8"
+        app:layout_constraintTop_toBottomOf="@id/tvAc" />
+
+    <TextView
+        android:id="@+id/tv8"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_grey600"
+        android:text="8"
+        app:layout_constraintLeft_toRightOf="@id/tv9"
+        app:layout_constraintRight_toLeftOf="@id/tv7"
+        app:layout_constraintTop_toTopOf="@id/tv9" />
+
+    <TextView
+        android:id="@+id/tv7"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_grey600"
+        android:text="7"
+        app:layout_constraintLeft_toRightOf="@id/tv8"
+        app:layout_constraintRight_toLeftOf="@id/tvmultiply"
+        app:layout_constraintTop_toTopOf="@id/tv9" />
+
+    <TextView
+        android:id="@+id/tvmultiply"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_orange600"
+        android:text="*"
+        app:layout_constraintLeft_toRightOf="@id/tv7"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv9" />
+
+    <TextView
+        android:id="@+id/tv6"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_grey600"
+        android:text="6"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv5"
+        app:layout_constraintTop_toBottomOf="@id/tv9" />
+
+    <TextView
+        android:id="@+id/tv5"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_grey600"
+        android:text="5"
+        app:layout_constraintLeft_toRightOf="@id/tv6"
+        app:layout_constraintRight_toLeftOf="@id/tv4"
+        app:layout_constraintTop_toTopOf="@id/tv6" />
+
+    <TextView
+        android:id="@+id/tv4"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_grey600"
+        android:text="4"
+        app:layout_constraintLeft_toRightOf="@id/tv5"
+        app:layout_constraintRight_toLeftOf="@id/tvsub"
+        app:layout_constraintTop_toTopOf="@id/tv6" />
+
+    <TextView
+        android:id="@+id/tvsub"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_orange600"
+        android:text="-"
+        app:layout_constraintLeft_toRightOf="@id/tv4"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv6" />
+
+    <TextView
+        android:id="@+id/tv3"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_grey600"
+        android:text="3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tv2"
+        app:layout_constraintTop_toBottomOf="@id/tv6" />
+
+    <TextView
+        android:id="@+id/tv2"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_grey600"
+        android:text="2"
+        app:layout_constraintLeft_toRightOf="@id/tv3"
+        app:layout_constraintRight_toLeftOf="@id/tv1"
+        app:layout_constraintTop_toTopOf="@id/tv3" />
+
+    <TextView
+        android:id="@+id/tv1"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_grey600"
+        android:text="1"
+        app:layout_constraintLeft_toRightOf="@id/tv2"
+        app:layout_constraintRight_toLeftOf="@id/tvadd"
+        app:layout_constraintTop_toTopOf="@id/tv3" />
+
+    <TextView
+        android:id="@+id/tvadd"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_orange600"
+        android:text="+"
+        app:layout_constraintLeft_toRightOf="@id/tv1"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv3" />
+
+    <TextView
+        android:id="@+id/tv0"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_grey600"
+        android:text="0"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tvpoint"
+        app:layout_constraintTop_toBottomOf="@id/tv3" />
+
+    <TextView
+        android:id="@+id/tvpoint"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_grey600"
+        android:text="."
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/tv0"
+        app:layout_constraintRight_toLeftOf="@id/tvequal"
+        app:layout_constraintTop_toTopOf="@id/tv0" />
+
+    <TextView
+        android:id="@+id/tvequal"
+        style="@style/style_main_tv_button"
+        android:background="@drawable/sp_main_button_bg_orange600"
+        android:text="="
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/tvpoint"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
