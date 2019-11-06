@@ -9,7 +9,7 @@ import androidx.lifecycle.LifecycleObserver
  * @author LiuJie https://github.com/Handy045
  * @date Created in 2019-10-11 16:30
  */
-open interface IPresenter : LifecycleObserver {
+interface IPresenter : LifecycleObserver {
     /**
      * 注销
      */

@@ -75,9 +75,9 @@ class StyleUtils private constructor() {
          * @return Selector样式
          */
         fun getStateColor(context: Context, @ColorRes idNormal: Int, @ColorRes idPressed: Int, @ColorRes idFocused: Int): ColorStateList {
-            val normal = context.resources.getColor(idNormal)
-            val pressed = context.resources.getColor(idPressed)
-            val focus = context.resources.getColor(idFocused)
+            val normal = ContextCompat.getColor(context, idNormal)
+            val pressed = ContextCompat.getColor(context, idPressed)
+            val focus = ContextCompat.getColor(context, idFocused)
             return getStateColor(normal, pressed, focus)
         }
 

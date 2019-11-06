@@ -7,6 +7,6 @@ package com.handy.basic.mvp
  * @author LiuJie https://github.com/Handy045
  * @date Created in 2019-10-11 16:30
  */
-open interface IView<P : BasePresenter> {
+interface IView<P : BasePresenter> {
     fun initPresenter(): P?
 }

@@ -323,7 +323,10 @@ class ImageUtils private constructor() {
             val canvas = Canvas(outBitmap)
             val paint = Paint()
             paint.colorFilter =
-                PorterDuffColorFilter(context.resources.getColor(tintColor), PorterDuff.Mode.SRC_IN)
+                PorterDuffColorFilter(
+                    ContextCompat.getColor(context, tintColor),
+                    PorterDuff.Mode.SRC_IN
+                )
             canvas.drawBitmap(inBitmap, 0f, 0f, paint)
             return BitmapDrawable(null, outBitmap)
         }
