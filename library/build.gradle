@@ -39,10 +39,6 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
 
-    // HandyBasicUI
-    // https://github.com/Handy045/HandyBasicUI
-    implementation "com.github.Handy045:HandyBasicUI:$handy_basic_ui_version"
-
     // EventBus
     // https://github.com/greenrobot/EventBus
     api "org.greenrobot:eventbus:$eventbus_version"
@@ -54,6 +50,10 @@ dependencies {
     // AndroidUtilCode
     // https://github.com/Blankj/AndroidUtilCode
     api "com.blankj:utilcode:$utilcode_version"
+
+    // HandyBasicUI
+    // https://github.com/Handy045/HandyBasicUI
+    implementation "com.github.Handy045:HandyBasicUI:$handy_basic_ui_version"
 
     // Bugly
     // https://bugly.qq.com/docs/user-guide/instruction-manual-android/?v=20180709165613
