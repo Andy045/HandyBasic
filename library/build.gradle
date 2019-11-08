@@ -39,7 +39,12 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
 
-    // EventBus - https://github.com/greenrobot/EventBus
+    // HandyBasicUI
+    // https://github.com/Handy045/HandyBasicUI
+    implementation "com.github.Handy045:HandyBasicUI:$handy_basic_ui_version"
+
+    // EventBus
+    // https://github.com/greenrobot/EventBus
     api "org.greenrobot:eventbus:$eventbus_version"
 
     // FastJson
