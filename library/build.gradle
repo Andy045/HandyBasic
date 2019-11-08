@@ -51,10 +51,6 @@ dependencies {
     // https://github.com/Blankj/AndroidUtilCode
     api "com.blankj:utilcode:$utilcode_version"
 
-    // HandyBasicUI
-    // https://github.com/Handy045/HandyBasicUI
-    implementation "com.github.Handy045:HandyBasicUI:$handy_basic_ui_version"
-
     // Bugly
     // https://bugly.qq.com/docs/user-guide/instruction-manual-android/?v=20180709165613
     api "com.tencent.bugly:crashreport:$bugly_crashreport_version"
