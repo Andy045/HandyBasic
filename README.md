@@ -77,8 +77,24 @@ allprojects {
 
 ```xml
 dependencies {
-        implementation 'com.github.Handy045:HandyBasic:2.1.1'
+        implementation 'com.github.Handy045:HandyBasic:最新版本'
 }
 ```
 
 3、 在接入工程的AndroidManifest中设置application为BaseAppLication或其子类。但如果是接入第三方工程，无需设置，但需要在第三方工程的application onCreate方法中增加：new BaseApplication(this).onCreate()。
+
+最新版本：
+
+[![](https://jitpack.io/v/Handy045/HandyBasic.svg)](https://jitpack.io/#Handy045/HandyBasic)
+
+# 相关链接
+
+[HandyBasic](https://github.com/Handy045/HandyBasic)
+
+[EventBus](https://github.com/greenrobot/EventBus)
+
+[FastJson](https://github.com/alibaba/fastjson)
+
+[AndroidUtilCode](https://github.com/Blankj/AndroidUtilCode)
+
+[Bugly](https://bugly.qq.com/)
