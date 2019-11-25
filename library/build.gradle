@@ -7,6 +7,9 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
 
+    compileOptions {
+        kotlinOptions.freeCompilerArgs += ['-module-name', "com.handy.basic"]
+    }
 
     defaultConfig {
         minSdkVersion 19
