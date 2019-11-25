@@ -2,6 +2,7 @@ package com.handy.basic.utils
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.drawable.Drawable
 import android.graphics.drawable.StateListDrawable
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
@@ -39,11 +40,28 @@ class StyleUtils private constructor() {
          * @return Selector样式
          */
         fun getStateDrawable(context: Context, @DrawableRes idNormal: Int, @DrawableRes idPressed: Int, @DrawableRes idFocused: Int): StateListDrawable {
-            val stateListDrawable = StateListDrawable()
             val normal = if (idNormal == -1) null else ContextCompat.getDrawable(context, idNormal)
             val pressed =
                 if (idPressed == -1) null else ContextCompat.getDrawable(context, idPressed)
             val focus = if (idFocused == -1) null else ContextCompat.getDrawable(context, idFocused)
+            return getStateDrawable(normal, pressed, focus)
+        }
+
+        /**
+         * 通过代码设置Selector效果
+         *
+         * @param context   上下文
+         * @param idNormal  默认样式（或者图片和颜色的资源ID）
+         * @param idPressed 点击样式（或者图片和颜色的资源ID）
+         * @param idFocused 焦点样式（或者图片和颜色的资源ID）
+         * @return Selector样式
+         */
+        fun getStateDrawable(
+            normal: Drawable?,
+            pressed: Drawable?,
+            focus: Drawable?
+        ): StateListDrawable {
+            val stateListDrawable = StateListDrawable()
             //注意该处的顺序，只要有一个状态与之相配，背景就会被换掉
             //所以不要把大范围放在前面了，如果sd.addState(new[]{},normal)放在第一个的话，就没有什么效果了
             stateListDrawable.addState(
