@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'org.jetbrains.dokka-android'
 
 android {
     compileSdkVersion 29
@@ -58,4 +59,40 @@ dependencies {
     // https://bugly.qq.com/docs/user-guide/instruction-manual-android/?v=20180709165613
     api "com.tencent.bugly:crashreport:$bugly_crashreport_version"
     api "com.tencent.bugly:nativecrashreport:$bugly_nativecrashreport_version"
+}
+
+// ========================================
+// 发布相关任务
+// ========================================
+tasks.withType(JavaCompile) { //指定编码
+    options.encoding = "UTF-8"
+}
+
+task sourcesJar(type: Jar) { //打包源码
+    group = 'maven'
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    failOnError false
+    source = android.sourceSets.main.java.sourceFiles
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += configurations.compile
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) { //制作文档(Javadoc)
+    group = 'maven'
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) {
+    outputFormat = "javadoc"
+    outputDirectory = javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
 }
